@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PULLA SUHARSHITHA CV</title>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="https://i.postimg.cc/90jG01Jt/favicon.png">
+  
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      background: #fef3c7; /* beige background */
+      color: #3f3f3f;
+    }
+
+    /* Header */
+    header {
+      background: #92400e; /* brown */
+      color: white;
+      text-align: center;
+      padding: 40px 20px;
+      position: relative;
+    }
+    header img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid white;
+      position: absolute;
+      right: 20px;
+      top: 20px;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2.2rem;
+    }
+
+    header p {
+      margin: 5px 0;
+    }
+
+    /* Container */
+    .container {
+      display: flex;
+      max-width: 1200px;
+      margin: auto;
+      padding: 20px;
+      gap: 20px;
+    }
+
+    /* Sidebar */
+    nav {
+      flex: 1;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      padding: 20px;
+      height: fit-content;
+    }
+    nav button {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 10px;
+      border: none;
+      border-radius: 8px;
+      background: #92400e; /* brown */
+      color: white;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    nav button:hover { background: #78350f; /* darker brown */ }
+
+    /* Content */
+    .content {
+      flex: 3;
+    }
+    .card {
+      background: white;
+      border-radius: 12px;
+      padding: 25px;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      color: #92400e; /* brown heading */
+      margin-top: 0;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+    }
+    th, td {
+      border: 1px solid #e5e7eb;
+      padding: 10px;
+      text-align: center;
+    }
+    th {
+      background: #92400e;
+      color: white;
+    }
+    tr:nth-child(even) { background: #fde68a; /* light yellow accent */ }
+
+    ul {
+      padding-left: 20px;
+    }
+    ul li { margin-bottom: 8px; }
+
+    canvas {
+      border: 2px solid #92400e;
+      border-radius: 8px;
+      background: #fff;
+      margin-top: 15px;
+      width: 100%;
+      height: 500px;
+    }
+
+    #resumeSection, #bresenhamSection { display: none; }
+    #resumeSection.active, #bresenhamSection.active { display: block; }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <h1>PULLA SUHARSHITHA</h1>
+    <p>📍 Andhra Pradesh, Vijayawada, NTR road</p>
+    <p>📧 pullasuharshitha@gmail.com | 📞 7780462915</p>
+    <img src="https://i.postimg.cc/DzyycGYQ/7.jpg" alt="Profile Photo">
+  </header>
+
+  <!-- Main -->
+  <div class="container">
+    <!-- Sidebar -->
+    <nav>
+      <button onclick="showSection('resumeSection')">Resume</button>
+      <button onclick="showSection('bresenhamSection')">Bresenham's Algorithm</button>
+    </nav>
+
+    <!-- Content -->
+    <div class="content">
+      <!-- Resume -->
+      <div id="resumeSection" class="active">
+        <div class="card">
+          <h2>Education Qualifications</h2>
+          <table>
+            <tr>
+              <th>Qualification</th>
+              <th>Institution</th>
+              <th>Year</th>
+              <th>Percentage/CGPA</th>
+            </tr>
+            <tr>
+              <td>B.Tech in Computer Science</td>
+              <td>IIIT Dharwad</td>
+              <td>2024 - 2028</td>
+              <td>8.50 CGPA</td>
+            </tr>
+            <tr>
+              <td>Intermediate</td>
+              <td>Sri Chaitanya Junior College</td>
+              <td>2022 - 2024</td>
+              <td>97%</td>
+            </tr>
+            <tr>
+              <td>SSC</td>
+              <td>Sri Chaitanya School</td>
+              <td>2021 - 2022</td>
+              <td>97%</td>
+            </tr>
+          </table>
+        </div>
+
+        <div class="card">
+          <h2>Skills</h2>
+          <ul>
+            <li>HTML, CSS, JavaScript</li>
+            <li>Python, C</li>
+            <li>Data Structures & Algorithms</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h2>Projects</h2>
+          <h3>Bresenham's Line Algorithm</h3>
+          <p><strong>Technologies:</strong> HTML, HTML canvas, JavaScript</p>
+          <p>Developed Bresenham's line drawing algorithm on an HTML canvas with user input for coordinates (x,y).</p>
+        </div>
+      </div>
+
+      <!-- Bresenham Section -->
+      <div id="bresenhamSection">
+        <div class="card">
+          <h2>Bresenham's Line Algorithm</h2>
+          <div style="margin-top:10px;">
+            <label>X1: <input type="number" id="x1"></label>
+            <label>Y1: <input type="number" id="y1"></label>
+            <label>X2: <input type="number" id="x2"></label>
+            <label>Y2: <input type="number" id="y2"></label>
+            <button onclick="drawFromInputs()">Draw Line</button>
+          </div>
+          <canvas id="myCanvas"></canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function showSection(id) {
+      document.getElementById('resumeSection').classList.remove('active');
+      document.getElementById('bresenhamSection').classList.remove('active');
+      document.getElementById(id).classList.add('active');
+    }
+
+    // Canvas setup
+    const canvas = document.getElementById("myCanvas");
+    const ctx = canvas.getContext("2d");
+    const w = canvas.width, h = canvas.height;
+
+    ctx.translate(w/2, h/2);
+    ctx.scale(1, -1);
+
+    function drawAxes() {
+      ctx.strokeStyle = "#78350f";
+      ctx.lineWidth = 1;
+      ctx.beginPath();
+      ctx.moveTo(-w/2, 0); ctx.lineTo(w/2, 0);
+      ctx.moveTo(0, -h/2); ctx.lineTo(0, h/2);
+      ctx.stroke();
+    }
+    drawAxes();
+
+    function plot(x, y) { ctx.fillRect(x, y, 1, 1); }
+
+    function bresenham(x1, y1, x2, y2) {
+      let dx = Math.abs(x2 - x1);
+      let dy = Math.abs(y2 - y1);
+      let sx = (x1 < x2) ? 1 : -1;
+      let sy = (y1 < y2) ? 1 : -1;
+      let err = dx - dy;
+
+      while (true) {
+        plot(x1, y1);
+        if (x1 === x2 && y1 === y2) break;
+        let e2 = 2 * err;
+        if (e2 > -dy) { err -= dy; x1 += sx; }
+        if (e2 < dx) { err += dx; y1 += sy; }
+      }
+    }
+
+    function drawFromInputs() {
+      let x1 = parseInt(document.getElementById("x1").value);
+      let y1 = parseInt(document.getElementById("y1").value);
+      let x2 = parseInt(document.getElementById("x2").value);
+      let y2 = parseInt(document.getElementById("y2").value);
+
+      ctx.clearRect(-w/2, -h/2, w, h);
+      drawAxes();
+
+      ctx.fillStyle = "#92400e";
+      bresenham(x1, y1, x2, y2);
+    }
+  </script>
+
+</body>
+</html>
